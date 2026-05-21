@@ -5,7 +5,7 @@
 LiquidCrystal lcd(A0, A1, A2, A3, A4, A5);
 Servo myservo;
 
-char password[] = {'1', '2', '3', '4'}; //كلمة المرور
+char password[] = {'1', '2', '3', '4'}; // ! psasword
 int buzz = 12;
 int RedpinLock = 10;  
 int GreenpinUnlock = 11;
@@ -28,7 +28,7 @@ void setup() {
   pinMode(buzz, OUTPUT);
   myservo.attach(9);
   
-  // تأمين القفل 
+  // set lock
   myservo.write(0);
   digitalWrite(RedpinLock, HIGH);
   digitalWrite(GreenpinUnlock, LOW);
@@ -70,14 +70,14 @@ void loop() {
     digitalWrite(RedpinLock, LOW);
     digitalWrite(GreenpinUnlock, HIGH);
     
-    // فتح القفل
+    // open lock
     for (int pos = 0; pos <= 90; pos++) {
       myservo.write(pos);
       delay(15);
     }
     delay(2000);
     
-    // إغلاق القفل
+    // close lock
     for (int pos = 90; pos >= 0; pos--) {
       myservo.write(pos);
       delay(15);
