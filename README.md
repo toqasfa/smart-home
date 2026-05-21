@@ -1,0 +1,1 @@
+ This is a code for a smart home system that controls the fan, buzzer, light and a smart lock automatically. When it gets too hot (above 50°C), it will make the buzzer alarm and when it gets hot (above 30°C), the fan turns on. Light sensor turns on an LED automatically when it becomes dark. All temperature values are displayed on an LCD screen. 
