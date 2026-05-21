@@ -31,7 +31,7 @@ void setup() {
 void loop() {
   
   int raw = analogRead(temppin);        // 0-1023
-  temp = (raw / 1023.0) * 500.0;        // تحويل إلى درجة مئوية
+  temp = (raw / 1023.0) * 500.0;     // transmation EQ   
   
   Serial.print("Temperature: ");
   Serial.println(temp);
@@ -41,7 +41,7 @@ void loop() {
   lcd.print(temp);
   lcd.print(" C");
   
-  // التحكم في المروحة والجرس حسب درجة الحرارة
+  // fan control
   if (temp > tempmax) {
     digitalWrite(fan, HIGH);   
     digitalWrite(buzz, HIGH);  
@@ -49,7 +49,7 @@ void loop() {
     lcd.print("Fan: MAX  ALARM!");
   }
   else if (temp >= tempmin) {
-    // التحكم في سرعة المروحة 
+    // speed fan 
     fanSpeed = map(temp, tempmin, tempmax, 80, 255);
     fanlcd = map(temp, tempmin, tempmax, 0, 100);
     analogWrite(fan, fanSpeed);
@@ -67,7 +67,7 @@ void loop() {
     lcd.print("Fan: OFF     ");
   }
   
-  // التحكم في الليد حسب شدة الضوء
+  // led control
   level = analogRead(ldr);
   if (level < threshold) {
     digitalWrite(led, HIGH);   
